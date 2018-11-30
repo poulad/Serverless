@@ -21,4 +21,7 @@ sls create --template aws-csharp
 
 # configure AWS credentials
 sls config credentials --provider aws --key $AWS_KEY --secret $AWS_SECRET
+
+bash ./build.sh
+sls deploy
 ```

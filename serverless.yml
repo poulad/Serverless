@@ -9,8 +9,8 @@ package:
 
 functions:
   hello:
-    handler: CsharpHandlers::ServerlessDemo.Handler::Hello
-   events:
+    handler: ServerlessDemo::ServerlessDemo.Handler::Hello
+    events:
      - http:
          path: /
          method: get
