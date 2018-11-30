@@ -16,12 +16,11 @@ npm install --global serverless
 mkdir -p /tmp/serverless/demo
 cd !$
 
-# create a new .NET Core Lambda project
-sls create --template aws-csharp
+# create a new Node.JS Lambda project
+sls create --template aws-nodejs
 
 # configure AWS credentials
 sls config credentials --provider aws --key $AWS_KEY --secret $AWS_SECRET
 
-bash ./build.sh
 sls deploy
 ```
