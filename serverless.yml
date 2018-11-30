@@ -3,6 +3,9 @@ service: serverless-demo
 provider:
   name: aws
   runtime: nodejs8.10
+#  environment:
+#    GITHUB_TOKEN: foo_bar
+
 
 functions:
   hello:
@@ -17,7 +20,7 @@ functions:
     events:
       - http:
           path: /webhook
-          method: get
+          method: post
 
 package:
   exclude:
