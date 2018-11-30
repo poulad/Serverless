@@ -6,10 +6,17 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: hello.handle
     events:
       - http:
           path: /
+          method: get
+  
+  webhook:
+    handler: webhook.handle
+    events:
+      - http:
+          path: /webhook
           method: get
 
 package:

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.hello = async (event, context) => {
+module.exports.handle = async (event, context) => {
   return {
     statusCode: 200,
     headers: {"Content-Type": "application/json"},
