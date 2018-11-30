@@ -4,25 +4,29 @@ const https = require('https');
 
 function getRandomJoke() {
   return new Promise((resolve, reject) => {
-    https.get(
-      'https://icanhazdadjoke.com', {
+    https.get({
+        hostname: 'icanhazdadjoke.com',
         headers: {
-          "Accept": "text/plain"
-        },
-      },
-      resp => {
+          Accept: "text/plain"
+        }
+      }, response => {
         let joke = ''
-        resp.on('data', chunk => {
+
+        response.on('data', chunk => {
           joke += chunk
         })
 
-        resp.on('end', () => {
+        response.on('end', () => {
           resolve(joke)
         })
-      }
-    ).on("error", err => {
-      reject(err);
-    });
+
+        response.on('error', error => {
+          reject(error)
+        })
+      })
+      .on('error', error => {
+        reject(error)
+      })
   })
 }
 
@@ -32,8 +36,7 @@ module.exports.handle = async (event, context) => {
   try {
     joke = await getRandomJoke()
   } catch (err) {
-    console.error(err)
-    joke = null
+    joke = err
   }
 
   return {
